@@ -3,17 +3,19 @@ import LetterForm from "../letter/LetterForm";
 import LetterList from "../letter/LetterList";
 import styled from "styled-components";
 import LetterEditModal from "../letter/LetterEditModal";
+import { dummyData } from "../DummyData";
 
 const MainForm = styled.main`
   margin: 0;
 `;
+
 export default function LetterPerson({
   imgUrl,
   formText,
   personName,
   listText,
 }) {
-  const [letters, setLetters] = useState([]);
+  const [letters, setLetters] = useState(dummyData);
   const [edit, setEdit] = useState(null);
   const [modal, setModal] = useState(false);
 
@@ -54,16 +56,23 @@ export default function LetterPerson({
         onAddLetter={onAddLetter}
         imgUrl={imgUrl}
         text={formText}
-        personname={personName}
+        personName={personName}
       />
+
       <LetterList
         text={listText}
         letters={letters}
+        personName={personName} // 이 부분을 추가
         onDeleted={onDeleted}
         onEdit={onEdit}
       />
       {modal && (
-        <LetterEditModal edit={edit} onClose={onClose} onSubmit={onSubmit} />
+        <LetterEditModal
+          letter={letters}
+          edit={edit}
+          onClose={onClose}
+          onSubmit={onSubmit}
+        />
       )}
     </MainForm>
   );

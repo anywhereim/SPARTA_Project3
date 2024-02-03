@@ -3,48 +3,6 @@ import Button from "../Button";
 import styled from "styled-components";
 import { v4 as uuidv4 } from "uuid";
 
-export default function LetterForm({ onAddLetter, imgUrl, text, personname }) {
-  const handleSubmit = (e) => {
-    e.preventDefault();
-
-    const content = e.target.content.value;
-    const nickname = e.target.nickname.value;
-    const date = new Date();
-
-    if (!content || !nickname) {
-      alert("편지와 닉네임을 모두 작성해 주세요😁 ");
-      return;
-    }
-
-    onAddLetter({
-      id: uuidv4(),
-      content,
-      nickname,
-      date,
-      personname,
-    });
-
-    e.target.reset();
-  };
-
-  return (
-    <LetterFormBox onSubmit={handleSubmit}>
-      <PersonImg src={imgUrl} />
-      <GetLetterInput
-        type="text"
-        placeholder={text}
-        name="content"
-        personname={personname}
-      />
-      <GetNickname>
-        <label htmlFor="nickname">닉네임 : </label>
-        <InputNickName id="nickname" type="text" name="nickname" />
-      </GetNickname>
-      <Button url="/img/crown.png" text="보내기" />
-    </LetterFormBox>
-  );
-}
-
 const LetterFormBox = styled.form`
   display: flex;
   flex-direction: column;
@@ -84,3 +42,45 @@ const GetNickname = styled.div`
 const InputNickName = styled.input`
   width: 100%;
 `;
+
+export default function LetterForm({ onAddLetter, imgUrl, text, personName }) {
+  const handleSubmit = (e) => {
+    e.preventDefault();
+
+    const content = e.target.content.value;
+    const nickname = e.target.nickname.value;
+    const date = new Date();
+
+    if (!content || !nickname) {
+      alert("편지와 닉네임을 모두 작성해 주세요😁 ");
+      return;
+    }
+
+    onAddLetter({
+      id: uuidv4(),
+      content,
+      nickname,
+      date,
+      personName,
+    });
+
+    e.target.reset();
+  };
+
+  return (
+    <LetterFormBox onSubmit={handleSubmit}>
+      <PersonImg src={imgUrl} />
+      <GetLetterInput
+        type="text"
+        placeholder={text}
+        name="content"
+        personName={personName}
+      />
+      <GetNickname>
+        <label htmlFor="nickname">닉네임 : </label>
+        <InputNickName id="nickname" type="text" name="nickname" />
+      </GetNickname>
+      <Button url="/img/crown.png" text="보내기" />
+    </LetterFormBox>
+  );
+}

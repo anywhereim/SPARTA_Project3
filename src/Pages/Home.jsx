@@ -7,7 +7,7 @@ export default function Home() {
   return (
     <div>
       <Header />
-      <Navbar detail="게시글" />
+      <Navbar detail="전체 편지📭" />
       <Root />
     </div>
   );

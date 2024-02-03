@@ -26,7 +26,7 @@ const StButton = styled.button`
 
 export default function Button({ text, url, onClick, line, color }) {
   return (
-    <StButton onClick={onClick} $line={line} $color={color}>
+    <StButton onClick={onClick} line={line} color={color}>
       {url && <Stimg src={url} />}
       {text}
     </StButton>

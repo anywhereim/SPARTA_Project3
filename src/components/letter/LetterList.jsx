@@ -2,6 +2,35 @@ import React from "react";
 import LetterItem from "./LetterItem";
 import styled from "styled-components";
 
+export default function LetterList({
+  letters,
+  text,
+  onDeleted,
+  onEdit,
+  personName,
+}) {
+  return (
+    <Section>
+      <SectionTitle>{text}</SectionTitle>
+      <SectionUl>
+        {letters
+          ?.filter(
+            (letters) => !personName || letters.personName === personName
+          )
+          .map((filteredLetter) => (
+            <SectionLi key={filteredLetter.id}>
+              <LetterItem
+                letter={filteredLetter}
+                onDeleted={onDeleted}
+                onEdit={onEdit}
+              />
+            </SectionLi>
+          ))}
+      </SectionUl>
+    </Section>
+  );
+}
+
 const Section = styled.section`
   display: flex;
   flex-direction: column;
@@ -18,29 +47,9 @@ const SectionTitle = styled.p`
 const SectionUl = styled.ul`
   padding: 0;
   margin: 2px auto;
-  width: 50%;
+  width: 40%;
 `;
 
 const SectionLi = styled.li`
   list-style-type: none;
 `;
-
-export default function LetterList({ letters, text, onDeleted, onEdit }) {
-  return (
-    <Section>
-      <SectionTitle>{text}</SectionTitle>
-      <SectionUl>
-        <SectionLi>
-          {[...letters].map((letter) => (
-            <LetterItem
-              key={letter.id}
-              letter={letter}
-              onDeleted={onDeleted}
-              onEdit={onEdit}
-            />
-          ))}
-        </SectionLi>
-      </SectionUl>
-    </Section>
-  );
-}
