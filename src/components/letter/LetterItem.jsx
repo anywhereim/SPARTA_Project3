@@ -1,5 +1,5 @@
 import React from "react";
-import Button from "../Button";
+import Button from "../layout/Button";
 import styled from "styled-components";
 
 export default function LetterItem({ letter, onDeleted, onEdit }) {

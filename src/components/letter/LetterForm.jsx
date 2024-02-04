@@ -1,47 +1,7 @@
 import React from "react";
-import Button from "../Button";
+import Button from "../layout/Button";
 import styled from "styled-components";
 import { v4 as uuidv4 } from "uuid";
-
-const LetterFormBox = styled.form`
-  display: flex;
-  flex-direction: column;
-  text-align: center;
-  justify-content: center;
-  margin: 30px auto;
-  width: 40%;
-`;
-
-const PersonImg = styled.img`
-  width: 130px;
-  height: 100px;
-  display: flex;
-  justify-content: center;
-  margin: auto;
-`;
-
-const GetLetterInput = styled.input`
-  height: 200px;
-  background-color: white;
-  border-radius: 5px;
-
-  @media (max-width: 1000px) {
-    height: 100px;
-  }
-`;
-
-const GetNickname = styled.div`
-  display: flex;
-  flex-direction: row;
-  gap: 5px;
-  font-size: 13px;
-  margin-top: 10px;
-  white-space: nowrap;
-`;
-
-const InputNickName = styled.input`
-  width: 100%;
-`;
 
 export default function LetterForm({ onAddLetter, imgUrl, text, personName }) {
   const handleSubmit = (e) => {
@@ -84,3 +44,43 @@ export default function LetterForm({ onAddLetter, imgUrl, text, personName }) {
     </LetterFormBox>
   );
 }
+
+const LetterFormBox = styled.form`
+  display: flex;
+  flex-direction: column;
+  text-align: center;
+  justify-content: center;
+  margin: 30px auto;
+  width: 40%;
+`;
+
+const PersonImg = styled.img`
+  width: 130px;
+  height: 100px;
+  display: flex;
+  justify-content: center;
+  margin: auto;
+`;
+
+const GetLetterInput = styled.input`
+  height: 200px;
+  background-color: white;
+  border-radius: 5px;
+
+  @media (max-width: 1000px) {
+    height: 100px;
+  }
+`;
+
+const GetNickname = styled.div`
+  display: flex;
+  flex-direction: row;
+  gap: 5px;
+  font-size: 13px;
+  margin-top: 10px;
+  white-space: nowrap;
+`;
+
+const InputNickName = styled.input`
+  width: 100%;
+`;

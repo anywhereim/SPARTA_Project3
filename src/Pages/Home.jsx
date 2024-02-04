@@ -1,7 +1,8 @@
 import React from "react";
-import Header from "../components/Header";
-import Navbar from "../components/Navbar";
+
 import Root from "./Root";
+import Header from "../components/layout/Header";
+import Navbar from "../components/layout/Navbar";
 
 export default function Home() {
   return (
